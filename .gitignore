@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+.idea/
+.vs/
+*.user
+*.suo
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
