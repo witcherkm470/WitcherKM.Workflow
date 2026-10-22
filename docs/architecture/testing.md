@@ -1,9 +1,5 @@
 # Проверки
 
-Для текущего каркаса:
+Для затронутого backend: `dotnet build WitcherKM.Workflow.sln` и `dotnet run --project tests/ImageCacheSmoke.csproj` для кэша изображений. Для React в `scripts/`: `npm run lint`, `npm run build`. Поведение новых HTTP-сценариев проверяет `node tests/http-smoke.mjs` против запущенного API на отдельной временной базе (`WORKFLOW_API_URL` задаёт адрес, по умолчанию `http://127.0.0.1:52771`). Скрипт проверяет создание, отказ, фильтрацию, порядок шагов и изображения. Браузерный проход проверяет реальный React с API и Vite proxy. Docker проверяется через `docker compose config`, сборку целевых образов `test` и HTTP-ответы после запуска.
 
-- `dotnet build WitcherKM.Workflow.sln` — компиляция backend и проверка project references.
-- В `scripts/`: `npm run lint`, `npm run build`.
-- Запуск API и `GET /api/health` — реальный HTTP-хост. Через Vite проверяется проксирование `/api` и показ ответа в React.
-
-Когда появятся сценарии, добавляй проверки наблюдаемого результата и отказа на подходящем уровне: domain unit, application integration, HTTP integration и UI. Моки клиента, браузер и настоящий HTTP-хост дают разные доказательства. Правило сохранности существующих тестов — в [testing skill](../../.agents/skills/testing/SKILL.md).
+Не повторяй проверки функциональности, которую изменение не затронуло. HTTP, браузер и сборка доказывают разные вещи. Правило сохранности существующих тестов — в [testing skill](../../.agents/skills/testing/SKILL.md).

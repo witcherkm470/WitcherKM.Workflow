@@ -11,3 +11,6 @@
 *.db-wal
 .env
 .env.*
+
+**/App_Data/
+.dotnet-local/

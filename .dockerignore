@@ -1,0 +1,11 @@
+.git
+.idea
+.dotnet-local
+**/bin
+**/obj
+**/node_modules
+scripts/dist
+src/WitcherKM.Workflow.Api/App_Data
+*.db
+*.db-shm
+*.db-wal

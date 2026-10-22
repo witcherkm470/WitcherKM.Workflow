@@ -1,0 +1,25 @@
+name: witcherkm-workflow
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+    volumes:
+      - workflow-data:/app/App_Data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "127.0.0.1:8081:80"
+    restart: unless-stopped
+
+volumes:
+  workflow-data:
