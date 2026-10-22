@@ -8,6 +8,7 @@ import {
   type ChainList,
 } from "../api";
 import { Title, Notice, CategoryChoices } from "../components";
+import CategoryFilter from "../CategoryFilter";
 
 export default function ChainsPage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -128,23 +129,14 @@ export default function ChainsPage() {
             placeholder="Найти цепочку"
           />
         </label>
-        <label>
-          Категория
-          <select
-            value={categoryId}
-            onChange={(e) => {
-              setCategoryId(e.target.value);
-              setLoading(true);
-            }}
-          >
-            <option value="">Все категории</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <CategoryFilter
+          categories={categories}
+          value={categoryId}
+          onChange={(value) => {
+            setCategoryId(value);
+            setLoading(true);
+          }}
+        />
       </div>
       {error && (
         <Notice
